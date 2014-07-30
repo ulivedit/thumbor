@@ -31,7 +31,7 @@ class Url(object):
 
     @classmethod
     def regex(cls, has_unsafe_or_hash=True):
-        reg = ['/?']
+        reg = [self.config.BASE_URL + '?']
 
         if has_unsafe_or_hash:
             reg.append(cls.unsafe_or_hash)

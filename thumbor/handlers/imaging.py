@@ -50,7 +50,7 @@ class ImagingHandler(ContextHandler):
         if url_signature:
             signer = Signer(self.context.server.security_key)
 
-            url_to_validate = Url.encode_url(url).replace('/%s/' % self.context.request.hash, '')
+            url_to_validate = Url.encode_url(url).replace(self.config.BASE_URL + '%s/' % self.context.request.hash, '')
             valid = signer.validate(url_signature, url_to_validate)
 
             if not valid and self.context.config.STORES_CRYPTO_KEY_FOR_EACH_IMAGE:
